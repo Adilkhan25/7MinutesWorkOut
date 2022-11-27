@@ -17,6 +17,10 @@ class ExerciseActivity : AppCompatActivity() {
     // and reset it in onDestroy method
     private var exerciseTimer : CountDownTimer? = null
     private var exerciseProcess : Int = 0
+
+    // create exercise list and current position of exercise
+    private var exerciseList : ArrayList<ExerciseModel>? = null
+    private var currentPosition = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         exerciseBinding = ActivityExerciseBinding.inflate(layoutInflater)
@@ -29,46 +33,54 @@ class ExerciseActivity : AppCompatActivity() {
         exerciseBinding?.exerciseToolbar?.setNavigationOnClickListener{
             onBackPressed()
         }
-        setUpTimerView()
+        exerciseList = Constants.defaultExerciseList()
+        setUpRestTimerView()
     }
-    private fun setUpTimerView()
+    private fun setUpRestTimerView()
     {
-        // set invisible to exercise frame layout and visible to rest frame layout
+        // set visible to rest frame layout and tv title
+        exerciseBinding?.flRestProgressBar?.visibility = View.VISIBLE
+        exerciseBinding?.tvTitle?.visibility = View.VISIBLE
+        // set invisible to image view , text view fl exercise
         exerciseBinding?.flExerciseProgressBar?.visibility = View.INVISIBLE
-        exerciseBinding?.flProgressBar?.visibility = View.VISIBLE
-        // change title from continue do  to get ready for
-        exerciseBinding?.tvTitle?.text = "Get ready for"
+        exerciseBinding?.tvExerciseTitle?.visibility = View.INVISIBLE
+        exerciseBinding?.ivImage?.visibility = View.INVISIBLE
         if(restTimer!=null)
         {
             restTimer?.cancel()
             restTimer = null
             restProcess = 0
         }
-        setUpProgressBar()
+        setUpRestProgressBar()
     }
     private fun setUpExerciseView()
     {
-        // set visible to exercise frame layout and invisible to rest frame layout
+        // set invisible to rest frame layout and tv title
+        exerciseBinding?.flRestProgressBar?.visibility = View.INVISIBLE
+        exerciseBinding?.tvTitle?.visibility = View.INVISIBLE
+        // set visible to image view , text view fl exercise
         exerciseBinding?.flExerciseProgressBar?.visibility = View.VISIBLE
-        exerciseBinding?.flProgressBar?.visibility = View.INVISIBLE
-        // change title from get ready for to continue do
-        exerciseBinding?.tvTitle?.text = "continue do"
+        exerciseBinding?.tvExerciseTitle?.visibility = View.VISIBLE
+        exerciseBinding?.ivImage?.visibility = View.VISIBLE
         if(exerciseTimer!=null)
         {
             exerciseTimer?.cancel()
             exerciseTimer = null
             exerciseProcess = 0
         }
+        // actual image and text from exercise model to xml
+        exerciseBinding?.ivImage?.setImageResource(exerciseList!![currentPosition].getImage())
+        exerciseBinding?.tvExerciseTitle?.text = exerciseList!![currentPosition].getName()
         setUpExerciseProgressBar()
     }
-    private fun setUpProgressBar()
+    private fun setUpRestProgressBar()
     {
-        exerciseBinding?.progressBar?.progress = restProcess
+        exerciseBinding?.restProgressBar?.progress = restProcess
         restTimer = object : CountDownTimer(10000, 1000)
         {
             override fun onTick(p0: Long) {
                 restProcess++
-              exerciseBinding?.progressBar?.progress = 10-restProcess
+              exerciseBinding?.restProgressBar?.progress = 10-restProcess
                 exerciseBinding?.tvTimer?.text = (p0/1000).toString()
 
             }
@@ -76,6 +88,7 @@ class ExerciseActivity : AppCompatActivity() {
             override fun onFinish() {
                 Toast.makeText(this@ExerciseActivity, "10 finished, let's do some exercise", Toast.LENGTH_LONG).show()
                 // when rest finish then call to exercise
+                currentPosition++
                 setUpExerciseView()
             }
 
@@ -95,9 +108,15 @@ class ExerciseActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 Toast.makeText(this@ExerciseActivity, "30 second finished now let's go for" +
-                        "rest",Toast.LENGTH_LONG).show()
+                        " rest",Toast.LENGTH_LONG).show()
                 // when exercise finish then call to rest
-              //  setUpTimerView()
+                if(currentPosition<exerciseList!!.size - 1)
+                    setUpRestTimerView()
+                else
+                {
+                    Toast.makeText(this@ExerciseActivity,"Wow you have done 7 minute work out",
+                    Toast.LENGTH_LONG).show()
+                }
             }
 
         }.start()
