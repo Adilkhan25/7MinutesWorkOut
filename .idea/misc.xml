@@ -5,13 +5,19 @@
       <map>
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable-v24/circular_color_accent_background.xml" value="0.1285" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable-v24/circular_progress_bar_gray.xml" value="0.1285" />
+        <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable-v24/tv_item_background_complete.xml" value="0.1285" />
+        <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable-v24/tv_item_background_current.xml" value="0.1285" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable/circular_progress_bar.xml" value="0.1285" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1285" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable/item_circular_color_accent_border.xml" value="0.1285" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable/item_color_accent_border_ripple.xml" value="0.1285" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable/tv_item_background.xml" value="0.1285" />
+        <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/layout/activity_bmiactivity.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/layout/activity_exercise.xml" value="0.1" />
+        <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/layout/activity_exercise_finish.xml" value="0.1" />
+        <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/layout/activity_finish.xml" value="0.1" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/layout/custom_dialog_finish.xml" value="0.1" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/layout/item_exercise_status.xml" value="0.17447916666666666" />
       </map>
     </option>
