@@ -115,7 +115,6 @@
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/item_circular_color_accent_border"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@id/tvExerciseTitle"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -147,9 +146,17 @@
                 android:textSize="25sp"
                 tools:text="10"/>
         </LinearLayout>
-
-
-
     </FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvExerciseStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_exercise_status"
+        android:layout_margin="5dp"
+        app:layout_constraintTop_toBottomOf="@id/flExerciseProgressBar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,8 +9,10 @@
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1285" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable/item_circular_color_accent_border.xml" value="0.1285" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable/item_color_accent_border_ripple.xml" value="0.1285" />
-        <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/layout/activity_exercise.xml" value="0.10666666666666667" />
+        <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/drawable/tv_item_background.xml" value="0.1285" />
+        <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/layout/activity_exercise.xml" value="0.1" />
         <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/adil0/AndroidStudioProjects/7MinutesWorkOut/app/src/main/res/layout/item_exercise_status.xml" value="0.17447916666666666" />
       </map>
     </option>
   </component>

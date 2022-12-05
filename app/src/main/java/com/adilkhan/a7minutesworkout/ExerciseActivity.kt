@@ -1,5 +1,7 @@
 package com.adilkhan.a7minutesworkout
 
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -7,6 +9,7 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.adilkhan.a7minutesworkout.databinding.ActivityExerciseBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -29,6 +32,13 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     // let's add text to speech in exercise
     // for this create tts
     private var tts : TextToSpeech? = null
+
+    // add audio to play when we are at rest for this declare media player variable
+    private var player : MediaPlayer? = null
+
+    // declare a variable of exerciseStatusAdapter
+    private var exerciseStatusAdapter:ExerciseStatusAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         exerciseBinding = ActivityExerciseBinding.inflate(layoutInflater)
@@ -47,10 +57,23 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         //initialize tts
         tts = TextToSpeech(this,this)
         setUpRestTimerView()
+
+        // here we will not do our work with adapter so let's create method and from here
+        setUpExerciseStatusRecyclerView()
     }
     private fun setUpRestTimerView()
     {
         // set visible to rest frame layout and tv title
+        try {
+            val soundUri = Uri.parse("android.resource://com.adilkhan.a7minutesworkout/"+R.raw.press_start)
+            player = MediaPlayer.create(applicationContext, soundUri)
+            player?.isLooping = false
+            player?.start()
+        }
+        catch (e:Exception)
+        {
+            e.printStackTrace()
+        }
         exerciseBinding?.flRestProgressBar?.visibility = View.VISIBLE
         exerciseBinding?.tvTitle?.visibility = View.VISIBLE
         exerciseBinding?.tvNextExercise?.visibility = View.VISIBLE
@@ -65,7 +88,6 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             restProcess = 0
         }
         exerciseBinding?.tvNextExercise?.text = "Upcoming: \n${exerciseList!![currentPosition].getName()}"
-        speakOut("Take rest for 10 sec")
         setUpRestProgressBar()
     }
     private fun setUpExerciseView()
@@ -138,6 +160,13 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }.start()
     }
 
+    private fun setUpExerciseStatusRecyclerView()
+    {
+        exerciseBinding?.rvExerciseStatus?.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        exerciseStatusAdapter = ExerciseStatusAdapter(exerciseList!!)
+        exerciseBinding?.rvExerciseStatus?.adapter = exerciseStatusAdapter
+    }
     override fun onDestroy() {
         super.onDestroy()
         if(restTimer!=null)
