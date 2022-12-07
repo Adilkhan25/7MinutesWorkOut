@@ -12,11 +12,47 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="0dp"
         />
+    <RadioGroup
+        android:id="@+id/rgUnits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bmiToolbar"
+        android:layout_margin="10dp"
+        android:background="@drawable/drawable_radio_group_tab_background"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rbMetricUnits"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="0.5"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:background="@drawable/drawable_unit_tab_selector"
+            android:text="METRIC UNITS"
+            android:textColor="@drawable/drawable_unit_tab_text_color_selector"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+        <RadioButton
+            android:id="@+id/rbUsUnits"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="0.5"
+            android:button="@null"
+            android:checked="false"
+            android:gravity="center"
+            android:background="@drawable/drawable_unit_tab_selector"
+            android:text="US UNITS"
+            android:textColor="@drawable/drawable_unit_tab_text_color_selector"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+    </RadioGroup>
    <com.google.android.material.textfield.TextInputLayout
        android:id="@+id/textBoxWeight"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_below="@id/bmiToolbar"
+       android:layout_below="@id/rgUnits"
        android:layout_margin="10dp"
        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
        android:backgroundTint="@color/colorPrimary"
