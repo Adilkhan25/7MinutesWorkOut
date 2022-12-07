@@ -16,9 +16,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
           //  finish()
         }
+        // for bmi calculation
         binding?.flBmi?.setOnClickListener{
             val bmiIntent = Intent(this@MainActivity, BMIActivity::class.java)
             startActivity(bmiIntent)
+        }
+        // for history
+        binding?.flHistory?.setOnClickListener {
+            val historyIntent = Intent(this@MainActivity, History::class.java)
+            startActivity(historyIntent)
         }
     }
 
