@@ -3,6 +3,8 @@ package com.adilkhan.a7minutesworkout
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import com.adilkhan.a7minutesworkout.databinding.ActivityBmiactivityBinding
 import com.adilkhan.a7minutesworkout.databinding.ActivityMainBinding
@@ -11,6 +13,7 @@ import java.math.RoundingMode
 
 class BMIActivity : AppCompatActivity() {
     private var bmiBinding:ActivityBmiactivityBinding? = null
+    private var radioButton : RadioButton? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bmiBinding = ActivityBmiactivityBinding.inflate(layoutInflater)
@@ -21,6 +24,13 @@ class BMIActivity : AppCompatActivity() {
         supportActionBar?.title = "CALCULATE BMI"
         bmiBinding?.bmiToolbar?.setNavigationOnClickListener{
             onBackPressed()
+        }
+        bmiBinding?.rgUnits?.setOnCheckedChangeListener{
+            _,id->
+            radioButton = findViewById(id)
+            if(radioButton==bmiBinding?.rbMetricUnits) displayMetricUnitView()
+            else if(radioButton==bmiBinding?.rbUsUnits) displayUsUnitView()
+
         }
         bmiBinding?.btnCalculateBmi?.setOnClickListener {
             if(!validateMetricUnit())
@@ -37,10 +47,24 @@ class BMIActivity : AppCompatActivity() {
         }
 
     }
+    private fun displayMetricUnitView()
+    {
+        bmiBinding?.llUSUnits?.visibility = View.INVISIBLE
+        bmiBinding?.textBoxHeight?.visibility = View.VISIBLE
+        bmiBinding?.textBoxWeight?.hint = "WEIGHT(in kg)"
+
+    }
+    private fun displayUsUnitView()
+    {
+        bmiBinding?.textBoxHeight?.visibility = View.INVISIBLE
+        bmiBinding?.llUSUnits?.visibility = View.VISIBLE
+        bmiBinding?.textBoxWeight?.hint = "WEIGHT(in pnd)"
+    }
     private fun validateMetricUnit():Boolean{
         var isValid = true
-        if(bmiBinding?.etHeight?.text.toString().isEmpty()) isValid = false
-        else if (bmiBinding?.etWeight?.text.toString().isEmpty()) isValid = false
+            if (bmiBinding?.etHeight?.text.toString().isEmpty()) isValid = false
+            else if (bmiBinding?.etWeight?.text.toString().isEmpty()) isValid = false
+
         return isValid
     }
     private fun displayBmiResult(bmiValue:Float)
