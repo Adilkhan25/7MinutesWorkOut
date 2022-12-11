@@ -12,9 +12,11 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.adilkhan.a7minutesworkout.databinding.ActivityExerciseBinding
 import com.adilkhan.a7minutesworkout.databinding.CustomDialogFinishBinding
+import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -125,7 +127,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun setUpRestProgressBar()
     {
         exerciseBinding?.restProgressBar?.progress = restProcess
-        restTimer = object : CountDownTimer(1000, 1000)
+        restTimer = object : CountDownTimer(10000, 1000)
         {
             override fun onTick(p0: Long) {
                 restProcess++
@@ -154,11 +156,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun setUpExerciseProgressBar()
     {
         exerciseBinding?.exerciseProgressBar?.progress = exerciseProcess
-        exerciseTimer=object : CountDownTimer(1000,1000)
+        exerciseTimer=object : CountDownTimer(37000,1000)
         {
             override fun onTick(p0: Long) {
                 exerciseProcess++
-                exerciseBinding?.exerciseProgressBar?.progress = 30-exerciseProcess
+                exerciseBinding?.exerciseProgressBar?.progress = 37-exerciseProcess
                 exerciseBinding?.tvExerciseTimer?.text = (p0/1000).toString()
             }
 
@@ -178,6 +180,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                    val finishIntent : Intent = Intent(this@ExerciseActivity, FinishActivity::class.java)
                     startActivity(finishIntent)
                 }
+
+
             }
 
         }.start()

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
+    android:padding="10dp"
     android:orientation="vertical"
     tools:context=".FinishActivity">
     <androidx.appcompat.widget.Toolbar
@@ -54,8 +55,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/colorAccent"
         android:layout_marginTop="50dp"
+        app:backgroundTint="@null"
+        android:background="@drawable/finish_button_background"
         android:textColor="@color/white"
         android:text="FINISH"
         android:textSize="18sp"

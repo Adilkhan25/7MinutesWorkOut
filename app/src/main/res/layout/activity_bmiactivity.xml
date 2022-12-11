@@ -124,7 +124,7 @@
                  android:textColor="@color/colorPrimary"
                  android:inputType="numberDecimal"
                  android:textSize="16sp"
-                 android:hint="FIT"
+                 android:hint="FEET"
                  android:textColorHint="@color/colorAccent"
                  />
          </com.google.android.material.textfield.TextInputLayout>
